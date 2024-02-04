@@ -1,11 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 
-export default function Home() {
+export default function ResetYourPassword() {
   const [formData, setFormData] = useState({
-    email: "",
     password: "",
   });
 
@@ -17,7 +15,6 @@ export default function Home() {
     e.preventDefault();
     console.log(formData);
     setFormData({
-      email: "",
       password: "",
     });
   };
@@ -28,58 +25,41 @@ export default function Home() {
         <div className="login-content">
           <img src="./assets/Group 2.png" alt="Logo" />
           <br />
-          <h1 className="login-title">Log in</h1>
+          <h1 className="login-title">Reset your password</h1>
           <p>Welcome back! Please enter your details.</p>
           <form className="login-form" onSubmit={handleSubmit}>
             <div className="form-group">
-              <label>Email</label>
+              <label>New password</label>
               <input
-                id="emailL"
-                name="email"
-                type="email"
-                autoComplete="email"
-                required
-                className="form-control"
-                placeholder="Entre your email"
-                value={formData.email}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="form-group">
-              <label>Password</label>
-              <input
-                id="passwordL"
+                id="new-password"
                 name="password"
                 type="password"
                 autoComplete="current-password"
                 required
                 className="form-control"
-                placeholder="Entre your password"
+                placeholder="Enter your new password"
                 value={formData.password}
                 onChange={handleChange}
               />
             </div>
-            <div className="split">
-              <div>
-                <input type="checkbox" name="remember-me" id="remember-me" />
-                <span style={{ color: "GrayText" }}>Remember me</span>
-              </div>
-
-              <Link className="sign-up" to="/forget-password">
-                Forget password?
-              </Link>
+            <div className="form-group">
+              <label>Confirm new password</label>
+              <input
+                id="confirm-new-password"
+                name="password"
+                type="password"
+                autoComplete="current-password"
+                required
+                className="form-control"
+                placeholder="Confirm your new password"
+                value={formData.password}
+                onChange={handleChange}
+              />
             </div>
-
             <button type="submit" className="btn btn-primary">
-              Sign in
+              Restore
             </button>
           </form>
-          <p>
-            Don't have an account?{" "}
-            <Link className="sign-up" herf="@/app/sign-up">
-              <strong>Sign Up</strong>
-            </Link>
-          </p>
         </div>
       </div>
       <p className="arrt">© All Rights Reserved taprime.com</p>
