@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Link } from "next/link";
+import Link from "next/link";
 
 export default function ForgetPassword() {
   const [formData, setFormData] = useState({
@@ -24,7 +24,7 @@ export default function ForgetPassword() {
     <>
       <div className="login-container">
         <div className="login-content">
-          <img src="./assets/Group 2.png" alt="Logo" />
+          <img src="@/public/assets/Logo-2.png" alt="Logo" />
           <br />
           <h1 className="login-title">Forget password</h1>
           <p>Welcome back! Please enter your details.</p>
@@ -49,7 +49,7 @@ export default function ForgetPassword() {
           </form>
           <p>
             Won't to back login?{" "}
-            <Link className="sign-up" herf="/">
+            <Link className="sign-up"href={"/"}>
               <strong>Login form here</strong>
             </Link>
           </p>

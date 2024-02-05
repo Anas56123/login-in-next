@@ -23,7 +23,7 @@ export default function ResetYourPassword() {
     <>
       <div className="login-container">
         <div className="login-content">
-          <img src="./assets/Group 2.png" alt="Logo" />
+          <img src="@/public/assets/Logo-2.png" alt="Logo" />
           <br />
           <h1 className="login-title">Reset your password</h1>
           <p>Welcome back! Please enter your details.</p>

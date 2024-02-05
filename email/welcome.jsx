@@ -5,10 +5,10 @@ import {
   Heading,
   Html,
   Img,
-  Link,
   Preview,
   Text,
 } from "@react-email/components";
+import Logo from "@assets/Logo-2.png";
 import * as React from "react";
 
 export const WelcomeEmail = ({ firstName }) => {
@@ -20,11 +20,12 @@ export const WelcomeEmail = ({ firstName }) => {
         <Container style={container}>
           <Heading style={h1}>Welcome {firstName}</Heading>
 
-          <Text style={{ ...text, marginBottom: "14px" }}>
-            Thank you for signing up for the best newsletter in the galaxy!
-          </Text>
+          <Img src={Logo} />
 
-          <Text style={footer}>Yours truly, Colby (Space Jelly Commander)</Text>
+          <Text style={{ ...text, marginBottom: "14px" }}>
+            Thank you for signing up to go my desk
+          </Text>
+          <Text style={footer}>From go my desk</Text>
         </Container>
       </Body>
     </Html>
@@ -53,14 +54,6 @@ const h1 = {
   padding: "0",
 };
 
-const link = {
-  color: "#2754C5",
-  fontFamily:
-    "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
-  fontSize: "14px",
-  textDecoration: "underline",
-};
-
 const text = {
   color: "#333",
   fontFamily:
@@ -77,14 +70,4 @@ const footer = {
   lineHeight: "22px",
   marginTop: "12px",
   marginBottom: "24px",
-};
-
-const code = {
-  display: "inline-block",
-  padding: "16px 4.5%",
-  width: "90.5%",
-  backgroundColor: "#f4f4f4",
-  borderRadius: "5px",
-  border: "1px solid #eee",
-  color: "#333",
 };

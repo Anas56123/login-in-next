@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 function SignupPage() {
@@ -10,6 +11,9 @@ function SignupPage() {
     name: "",
     phoneNumber: "",
   });
+  const [errorNum, setErrorNum] = useState(0);
+
+  const router = useRouter();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -19,19 +23,19 @@ function SignupPage() {
     e.preventDefault();
     const firstDigit = formData.phoneNumber.charAt(0);
     if (!["9", "5", "4", "2"].includes(firstDigit)) {
-      alert("Phone number must start with 9, 5, 4, or 2");
+      setErrorNum(1);
       return;
     }
     if (formData.phoneNumber.length !== 8) {
-      alert("Phone number must be exactly 8 digits long");
+      setErrorNum(2);
       return;
     }
     if (formData.name.length < 3) {
-      alert("The name must be at least 3 digits");
+      setErrorNum(3);
       return;
     }
     if (formData.password.length < 8) {
-      alert("The password must be at least 8 digits");
+      setErrorNum(4);
       return;
     }
     console.log(formData);
@@ -43,6 +47,7 @@ function SignupPage() {
         email: formData.email,
       }),
     });
+    router.push("/account");
   };
 
   return (
@@ -114,11 +119,24 @@ function SignupPage() {
           </form>
           <p>
             Already have an account?{" "}
-            <Link className="sign-up"href={"/"}>
+            <Link className="sign-up" href={"/"}>
               <strong>Log In</strong>
             </Link>
           </p>
         </div>
+        <p style={{ color: "#f00" }}>
+          {errorNum === 0
+            ? ""
+            : errorNum === 1
+            ? "Phone number must start with 9, 5, 4, or 2"
+            : errorNum === 2
+            ? "Phone number must be exactly 8 digits long"
+            : errorNum === 3
+            ? "The name must be at least 3 digits"
+            : errorNum === 4
+            ? "The password must be at least 8 digits"
+            : "Some thing went wrong please reload the page"}
+        </p>
       </div>
       <p className="arrt">© All Rights Reserved taprime.com</p>
     </>
