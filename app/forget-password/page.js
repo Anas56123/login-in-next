@@ -2,21 +2,33 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { getAccountId } from "@/supabase/getAccountId";
+import Logo from "@assets/Logo-2.png";
+import Image from "next/image";
 
 export default function ForgetPassword() {
   const [formData, setFormData] = useState({
-    email: "",
+    userName: "",
   });
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
-    setFormData({
-      email: "",
+    // console.log(formData);
+    const { data } = await getAccountId(formData.userName);
+    const { userEmail } = data?.[0];
+    console.log("userEmail", userEmail);
+    localStorage.setItem("userId", formData.userName);
+    await fetch("/api/email", {
+      method: "POST",
+      body: JSON.stringify({
+        firstName: formData.userName,
+        email: userEmail,
+        welcome: false,
+      }),
     });
   };
 
@@ -24,22 +36,22 @@ export default function ForgetPassword() {
     <>
       <div className="login-container">
         <div className="login-content">
-          <img src="@/public/assets/Logo-2.png" alt="Logo" />
+          <Image src={Logo} alt="Logo" />
           <br />
           <h1 className="login-title">Forget password</h1>
           <p>Welcome back! Please enter your details.</p>
           <form className="login-form" onSubmit={handleSubmit}>
             <div className="form-group">
-              <label htmlFor="email">Email</label>
+              <label>Name</label>
               <input
-                id="emailL"
-                name="email"
-                type="email"
-                autoComplete="email"
+                id="name"
+                name="userName"
+                type="text"
+                autoComplete="name"
                 required
                 className="form-control"
-                placeholder="Entre your email"
-                value={formData.email}
+                placeholder="Name"
+                value={formData.userName}
                 onChange={handleChange}
               />
             </div>
@@ -49,7 +61,7 @@ export default function ForgetPassword() {
           </form>
           <p>
             Won't to back login?{" "}
-            <Link className="sign-up"href={"/"}>
+            <Link className="sign-up" href={"/log-in"}>
               <strong>Login form here</strong>
             </Link>
           </p>

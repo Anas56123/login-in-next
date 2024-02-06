@@ -5,10 +5,12 @@ import Link from "next/link";
 import Image from "next/image";
 import Logo from "@assets/Logo-2.png";
 import { getAccount } from "@/supabase/getAccount";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   // TODO https://react.dev/reference/react/useRef
   let fetchedData;
+  const router = useRouter();
   (async function () {
     fetchedData = await getAccount();
   })();
@@ -36,11 +38,13 @@ export default function Home() {
       setIsWrong(false);
       console.log("Index is :", index);
       console.log("data is :", data);
-      if (data.userEmail == formData.email) {
+      if (data?.userEmail == formData.email) {
         if (data.userPassword == formData.password) {
           console.log(isCorrect);
           setIsCorrect(true);
           setIsLoding(false);
+          localStorage.setItem("userId", data.userName);
+          router.push("/account");
         } else {
           setIsWrong(true);
           setIsLoding(false);
@@ -51,6 +55,15 @@ export default function Home() {
       }
     });
   };
+
+  // function sentProps() {
+  //   CRouter().push({
+  //     pathname: "/account",
+  //     query: {
+  //       id: userID,
+  //     },
+  //   });
+  // }
 
   return (
     <>
@@ -120,7 +133,13 @@ export default function Home() {
                     <strong>Sign Up</strong>
                   </Link>
                 </p>
-                {isWrong ? <p style={{color: "#f00"}}>Wrong. right the email or the password again</p> : ""}
+                {isWrong ? (
+                  <p style={{ color: "#f00" }}>
+                    Wrong. right the email or the password again
+                  </p>
+                ) : (
+                  ""
+                )}
               </div>
             )}
           </div>

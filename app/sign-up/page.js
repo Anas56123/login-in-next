@@ -1,18 +1,18 @@
 "use client";
 
+import InsertAccount from "@/supabase/InsertAccount";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 function SignupPage() {
   const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-    name: "",
-    phoneNumber: "",
+    userEmail: "",
+    userPassword: "",
+    userName: "",
+    userPhoneNumber: "",
   });
   const [errorNum, setErrorNum] = useState(0);
-
   const router = useRouter();
 
   const handleChange = (e) => {
@@ -21,32 +21,37 @@ function SignupPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const firstDigit = formData.phoneNumber.charAt(0);
+    const firstDigit = formData.userPhoneNumber.charAt(0);
     if (!["9", "5", "4", "2"].includes(firstDigit)) {
       setErrorNum(1);
       return;
     }
-    if (formData.phoneNumber.length !== 8) {
+    if (formData.userPhoneNumber.length !== 8) {
       setErrorNum(2);
       return;
     }
-    if (formData.name.length < 3) {
+    if (formData.userName.length < 3) {
       setErrorNum(3);
       return;
     }
-    if (formData.password.length < 8) {
+    if (formData.userPassword.length < 8) {
       setErrorNum(4);
       return;
     }
     console.log(formData);
+    formData.userPhoneNumber = Number(formData.userPhoneNumber);
 
     await fetch("/api/email", {
       method: "POST",
       body: JSON.stringify({
-        firstName: formData.name,
-        email: formData.email,
+        firstName: formData.userName,
+        email: formData.userEmail,
+        welcome: true,
       }),
     });
+
+    InsertAccount(formData);
+    localStorage.setItem("userId", formData.userName);
     router.push("/account");
   };
 
@@ -61,13 +66,13 @@ function SignupPage() {
               <label>Email address</label>
               <input
                 id="emailS"
-                name="email"
+                name="userEmail"
                 type="email"
                 autoComplete="email"
                 required
                 className="form-control"
                 placeholder="Email address"
-                value={formData.email}
+                value={formData?.userEmail}
                 onChange={handleChange}
               />
             </div>
@@ -75,13 +80,13 @@ function SignupPage() {
               <label>Password</label>
               <input
                 id="passwordS"
-                name="password"
+                name="userPassword"
                 type="password"
                 autoComplete="current-password"
                 required
                 className="form-control"
                 placeholder="Password"
-                value={formData.password}
+                value={formData.userPassword}
                 onChange={handleChange}
               />
             </div>
@@ -89,13 +94,13 @@ function SignupPage() {
               <label>Name</label>
               <input
                 id="name"
-                name="name"
+                name="userName"
                 type="text"
                 autoComplete="name"
                 required
                 className="form-control"
                 placeholder="Name"
-                value={formData.name}
+                value={formData.userName}
                 onChange={handleChange}
               />
             </div>
@@ -103,13 +108,13 @@ function SignupPage() {
               <label>Phone Number</label>
               <input
                 id="phoneNumber"
-                name="phoneNumber"
+                name="userPhoneNumber"
                 type="tel"
                 autoComplete="tel"
                 required
                 className="form-control"
                 placeholder="Phone Number"
-                value={formData.phoneNumber}
+                value={formData.userPhoneNumber}
                 onChange={handleChange}
               />
             </div>
@@ -119,7 +124,7 @@ function SignupPage() {
           </form>
           <p>
             Already have an account?{" "}
-            <Link className="sign-up" href={"/"}>
+            <Link className="sign-up" href={"/log-in"}>
               <strong>Log In</strong>
             </Link>
           </p>

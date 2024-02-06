@@ -4,23 +4,23 @@ import {
   Head,
   Heading,
   Html,
+  Link,
   Preview,
   Text,
 } from "@react-email/components";
 import * as React from "react";
 
-export const WelcomeEmail = ({ firstName }) => {
+export const YourAccount = ({ firstName }) => {
+  console.log("email is sented");
   return (
     <Html>
       <Head />
       <Preview>Welcome to this newsletter!</Preview>
       <Body style={main}>
         <Container style={container}>
-          <Heading style={h1}>Welcome {firstName}</Heading>
+          <Heading style={h1}>Welcome Back {firstName}</Heading>
 
-          <Text style={{ ...text, marginBottom: "14px" }}>
-            Thank you for signing up to go my desk
-          </Text>
+          <Link href="http://localhost:3000/account">Your Account</Link>
           <Text style={footer}>From taprime</Text>
         </Container>
       </Body>
