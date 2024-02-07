@@ -1,6 +1,6 @@
 "use client";
 
-import InsertAccount from "@/supabase/InsertAccount";
+import InsertAccount from "@/supabase/AccountsProps/InsertAccount";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";

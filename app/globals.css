@@ -81,19 +81,91 @@ label {
   background: #51596a;
 }
 
-.split{
+.split {
   width: 300px;
   display: flex;
   justify-content: space-between;
 }
 
-.split div{
+.split div {
   display: flex;
   align-items: center;
 }
 
-.arrt{
-  color: #728FAA;
+.arrt {
+  color: #728faa;
   position: absolute;
   left: 20rem;
 }
+
+.box {
+  width: 200px;
+  height: 100px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    45deg,
+    rgba(0, 0, 0, 0.7819502801120448) 0%,
+    rgba(0, 0, 0, 0.06766456582633051) 100%
+  );
+  z-index: 2;
+}
+
+.memory-list {
+  list-style-type: none;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.imageContainer {
+  position: relative;
+}
+
+.img {
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.imageText {
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: medium;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.hold {
+  transform: scale(1.1);
+}
+
+.pagination {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+.pagination li {
+  margin: 0 5px;
+}
+
+.pagination li a {
+  text-decoration: none;
+  color: #333;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.pagination li.active a {
+  background-color: #007bff;
+  color: #fff;
+}
+

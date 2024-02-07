@@ -1,6 +1,6 @@
 "use client";
 
-import getUpgradePassword from "@/supabase/getUpgradePassword";
+import getUpgradePassword from "@/supabase/AccountsProps/getUpgradePassword";
 import { useState } from "react";
 import Image from "next/image";
 import Logo from "@assets/Logo-2.png";

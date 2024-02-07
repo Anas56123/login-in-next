@@ -1,4 +1,4 @@
-import supabase from "./supabase";
+import supabase from "../supabase";
 
 export default async function getUpgradePassword(updatedPassword, name) {
   const { data, error } = await supabase

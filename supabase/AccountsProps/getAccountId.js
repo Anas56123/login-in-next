@@ -1,5 +1,5 @@
 "use server";
-import supabase from "./supabase";
+import supabase from "../supabase";
 
 export async function getAccountId(id) {
   let data = await supabase.from("Acconts").select("*").eq("userName", id);

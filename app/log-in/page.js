@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Logo from "@assets/Logo-2.png";
-import { getAccount } from "@/supabase/getAccount";
+import { getAccount } from "@/supabase/AccountsProps/getAccount";
 import { useRouter } from "next/navigation";
 
 export default function Home() {

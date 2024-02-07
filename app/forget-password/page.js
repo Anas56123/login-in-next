@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { getAccountId } from "@/supabase/getAccountId";
+import { getAccountId } from "@/supabase/AccountsProps/getAccountId";
 import Logo from "@assets/Logo-2.png";
 import Image from "next/image";
 
