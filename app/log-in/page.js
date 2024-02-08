@@ -82,7 +82,7 @@ export default function Home() {
                 <p>Welcome back! Please enter your details.</p>
                 <form className="login-form" onSubmit={handleSubmit}>
                   <div className="form-group">
-                    <label>Email</label>
+                    <label style={{ marginBottom: "1rem" }}>Email</label>
                     <input
                       id="emailL"
                       name="email"
@@ -109,17 +109,18 @@ export default function Home() {
                       onChange={handleChange}
                     />
                   </div>
-                  <div className="split">
+                  <div style={{ marginBottom: "1rem" }} className="split">
                     <div>
                       <input
                         type="checkbox"
                         name="remember-me"
                         id="remember-me"
+                        style={{border: "#ccc"}}
                       />
                       <span style={{ color: "GrayText" }}>Remember me</span>
                     </div>
                     <Link className="sign-up" href={"/forget-password"}>
-                      <strong>Forget password?</strong>
+                      Forget password?
                     </Link>
                   </div>
 
@@ -127,7 +128,7 @@ export default function Home() {
                     Sign in
                   </button>
                 </form>
-                <p>
+                <p style={{ marginTop: "1rem", marginBottom: "19rem" }}>
                   Don't have an account?{" "}
                   <Link className="sign-up" href={"/sign-up"}>
                     <strong>Sign Up</strong>
@@ -142,8 +143,10 @@ export default function Home() {
                 )}
               </div>
             )}
+            <span style={{ color: "#728faa" }}>
+              © All Rights Reserved taprime.com
+            </span>
           </div>
-          <p className="arrt">© All Rights Reserved taprime.com</p>
         </>
       )}
     </>

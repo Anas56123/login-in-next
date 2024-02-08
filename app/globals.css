@@ -1,11 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&family=Skranji:wght@700&display=swap");
+
 body {
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .login-container {
   min-height: 98vh;
   display: flex;
   align-items: center;
+  flex-direction: column;
   justify-content: center;
   background-color: #fff;
 }
@@ -60,6 +63,8 @@ label {
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .btn {
@@ -90,12 +95,6 @@ label {
 .split div {
   display: flex;
   align-items: center;
-}
-
-.arrt {
-  color: #728faa;
-  position: absolute;
-  left: 20rem;
 }
 
 .box {
@@ -146,26 +145,123 @@ label {
 
 .pagination {
   list-style: none;
+  padding: 0;
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 0;
 }
 
-.pagination li {
+.pagination-item {
   margin: 0 5px;
 }
 
-.pagination li a {
-  text-decoration: none;
-  color: #333;
-  padding: 5px 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.pagination li.active a {
+.pagination-button {
   background-color: #007bff;
   color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
+.pagination-button:hover {
+  background-color: #0056b3;
+}
+
+.pagination-button:focus {
+  outline: none;
+}
+
+.pagination-button.active {
+  background-color: #0056b3;
+}
+
+.memory-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.error {
+  color: red;
+}
+
+.sucsuss {
+  color: greenyellow;
+}
+
+header {
+  background-color: #0058b6;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+header div {
+  width: 27rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+.log-out {
+  background-color: #f00;
+}
+
+.log-out:hover {
+  background-color: rgb(180, 3, 3);
+}
+
+.buttonContainer {
+  display: none;
+}
+
+.box.hold .buttonContainer {
+  display: block;
+}
+
+.editButton {
+  color: black;
+}
+
+.deleteButton {
+  color: red;
+}
+
+.u {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.u form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2px;
+  align-items: center;
+}
+
+.drop-zone {
+  border: 2px dashed #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.drop-zone.dragging {
+  background-color: #f0f0f0;
+}
+
+.drop-zone input {
+  display: none;
+}
+
+::placeholder{
+  color: #D0D5DD;
+}
+
+input[type="checkbox"] {
+  border: #ccc;
+  color: #ccc;
+  border-radius: 10px;
+}

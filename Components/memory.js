@@ -3,6 +3,7 @@ import React, { useState } from "react";
 
 const Memory = ({ title, imgSrc, date, description, likeNumber }) => {
   const [curHold, setCurHold] = useState(false);
+  const [didYouLike, setDidYouLike] = useState(false);
 
   return (
     <div

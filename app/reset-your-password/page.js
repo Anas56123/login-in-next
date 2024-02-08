@@ -13,6 +13,7 @@ export default function ResetYourPassword() {
   const [formDataTwo, setformDataTwo] = useState({
     userPassword: "",
   });
+  const [errorNum, setErrorNum] = useState(0);
   const router = useRouter();
 
   const handleChangeOne = (e) => {
@@ -23,15 +24,22 @@ export default function ResetYourPassword() {
     setformDataTwo({ ...formDataTwo, [e.target.name]: e.target.value });
   };
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!formDataOne === formDataTwo) return;
-    console.log(formDataOne);
-    console.log(formDataTwo);
+    console.log("formDataOne =", formDataOne);
+    console.log("formDataTwo =", formDataTwo);
+    if (!(formDataOne?.userPassword === formDataTwo?.userPassword)) {
+      setErrorNum(1);
+      return;
+    }
+    if (formDataOne?.userPassword.length < 8) {
+      setErrorNum(2);
+      return;
+    }
     const userId = localStorage?.getItem("userId");
+    setErrorNum(3);
     getUpgradePassword(formDataOne.userPassword, userId);
-    router.push('/account')
+    router.push("/account");
   };
 
   return (
@@ -74,6 +82,17 @@ export default function ResetYourPassword() {
             <button type="submit" className="btn btn-primary">
               Restore
             </button>
+            <p style={errorNum === 3 ? { color: "#0f0" } : { color: "#f00" }}>
+              {errorNum === 0
+                ? ""
+                : errorNum === 1
+                ? "The confirm and the new password must be the same"
+                : errorNum === 2
+                ? "Password must be exactly 8 digits long"
+                : errorNum === 3
+                ? "The account done sucsussfuly"
+                : "Some thing went wrong please reload the page"}
+            </p>
           </form>
         </div>
       </div>

@@ -129,7 +129,7 @@ function SignupPage() {
             </Link>
           </p>
         </div>
-        <p style={{ color: "#f00" }}>
+        <p className={errorNum === 5 ? "sucsuss" : "error"}>
           {errorNum === 0
             ? ""
             : errorNum === 1
@@ -140,6 +140,8 @@ function SignupPage() {
             ? "The name must be at least 3 digits"
             : errorNum === 4
             ? "The password must be at least 8 digits"
+            : errorNum === 5 
+            ? "The account done sucsussfuly"
             : "Some thing went wrong please reload the page"}
         </p>
       </div>
