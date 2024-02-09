@@ -100,16 +100,11 @@ label {
 .box {
   width: 200px;
   height: 100px;
-  border: 1px solid #ccc;
+  border: 1px solid #0000;
   border-radius: 8px;
   cursor: pointer;
-  transition: transform 0.3s ease;
   background: rgb(0, 0, 0);
-  background: linear-gradient(
-    45deg,
-    rgba(0, 0, 0, 0.7819502801120448) 0%,
-    rgba(0, 0, 0, 0.06766456582633051) 100%
-  );
+  background: #00000000;
   z-index: 2;
 }
 
@@ -122,6 +117,7 @@ label {
 
 .imageContainer {
   position: relative;
+  transition: transform 0.3s ease;
 }
 
 .img {
@@ -256,12 +252,80 @@ header div {
   display: none;
 }
 
-::placeholder{
-  color: #D0D5DD;
+::placeholder {
+  color: #d0d5dd;
 }
 
 input[type="checkbox"] {
   border: #ccc;
   color: #ccc;
   border-radius: 10px;
+}
+
+.edit-btn {
+  background-color: #000000;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition-duration: 0.4s;
+}
+
+.edit-btn:hover {
+  background-color: #3d3d3d;
+}
+
+.done-btn {
+  background-color: #2cbd00;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition-duration: 0.4s;
+}
+
+.done-btn:hover {
+  background-color: #249c00;
+}
+
+.delete-btn {
+  background-color: #f44336;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition-duration: 0.4s;
+}
+
+.delete-btn:hover {
+  background-color: #d32f2f;
+}
+
+.editBtn {
+  color: #fff;
+  background-color: #00000000;
+  border: none;
+  font-size: x-large;
+  position: relative;
+  left: 10rem;
+  top: 2rem;
+  z-index: 5;
 }

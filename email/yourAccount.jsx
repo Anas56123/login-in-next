@@ -11,7 +11,6 @@ import {
 import * as React from "react";
 
 export const YourAccount = ({ firstName }) => {
-  console.log("email is sented");
   return (
     <Html>
       <Head />

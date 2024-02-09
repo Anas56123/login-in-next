@@ -22,6 +22,7 @@ export default function Account() {
     tags: "",
   });
   const [dataUri, setDataUri] = useState("");
+  const [editMode, setEditMode] = useState(false);
   const router = useRouter();
   const postPerPage = 5;
   const indexOfLastPost = currentPage * postPerPage;
@@ -34,7 +35,7 @@ export default function Account() {
     if (numbers == currentPage) return;
     setCurrentPage(currentPage + 1);
   };
-  const prevPage = (numbers) => {
+  const prevPage = () => {
     if (currentPage == 1) return;
     setCurrentPage(currentPage - 1);
   };
@@ -47,11 +48,11 @@ export default function Account() {
   };
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value, url: dataUri });
-    console.log("formData =", formData);
   };
 
   function handleSubmit(e) {
     e.preventDefault();
+    if (editMode) setEditMode(false);
     addMemories(formData);
     setFormData({
       title: "",
@@ -119,9 +120,9 @@ export default function Account() {
                       <Memory
                         title={memory.title}
                         imgSrc={memory.url}
-                        description={memory.description}
-                        date={memory.created_at}
-                        likesNumber={memory.likesNumber}
+                        id={memory.id}
+                        setFormData={setFormData}
+                        setEditMode={setEditMode}
                       />
                     </li>
                   );
@@ -137,6 +138,7 @@ export default function Account() {
             </div>
           </nav>
           <form onSubmit={handleSubmit}>
+            {editMode ? <span>Edit: {formData.title}</span> : <span></span>}
             <input
               id="title"
               name="title"

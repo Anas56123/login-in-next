@@ -23,7 +23,6 @@ export default function Home() {
   const [isCorrect, setIsCorrect] = useState(false);
   const [isWrong, setIsWrong] = useState(false);
 
-  console.log("1", fetchedData);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -31,16 +30,11 @@ export default function Home() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
-    console.log("fetchedData:", fetchedData);
     fetchedData?.map((data, index) => {
       setIsLoding(true);
       setIsWrong(false);
-      console.log("Index is :", index);
-      console.log("data is :", data);
       if (data?.userEmail == formData.email) {
         if (data.userPassword == formData.password) {
-          console.log(isCorrect);
           setIsCorrect(true);
           setIsLoding(false);
           localStorage.setItem("userId", data.userName);

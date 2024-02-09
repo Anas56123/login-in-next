@@ -6,6 +6,5 @@ export default async function getMemories() {
     console.error(error);
     return;
   }
-  console.log(data);
   return data;
 }

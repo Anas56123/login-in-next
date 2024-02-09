@@ -7,6 +7,5 @@ export async function getAccountId(id) {
   //   console.error(error);
   //   return;
   // }
-  console.log(data);
   return data;
 }

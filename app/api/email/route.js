@@ -8,7 +8,6 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request) {
   const { firstName, email, welcome } = await request.json();
-  console.log(email);
   if (welcome == true) {
     try {
       resend.emails
@@ -19,8 +18,7 @@ export async function POST(request) {
           react: WelcomeEmail({
             firstName,
           }),
-        })
-        .then(console.log);
+        });
       return NextResponse.json(
         {
           status: "Ok",
@@ -30,9 +28,9 @@ export async function POST(request) {
         }
       );
     } catch (e) {
-      console.log({ error: e });
+      console.error({ error: e });
       if (e instanceof Error) {
-        console.log(`Failed to send email: ${e.message}`);
+        console.error(`Failed to send email: ${e.message}`);
       }
       return NextResponse.json(
         {
@@ -53,8 +51,7 @@ export async function POST(request) {
           react: YourAccount({
             firstName,
           }),
-        })
-        .then(console.log);
+        });
       return NextResponse.json(
         {
           status: "Ok",
@@ -64,9 +61,9 @@ export async function POST(request) {
         }
       );
     } catch (e) {
-      console.log({ error: e });
+      console.error({ error: e });
       if (e instanceof Error) {
-        console.log(`Failed to send email: ${e.message}`);
+        console.error(`Failed to send email: ${e.message}`);
       }
       return NextResponse.json(
         {

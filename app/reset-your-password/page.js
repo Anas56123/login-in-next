@@ -26,8 +26,6 @@ export default function ResetYourPassword() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("formDataOne =", formDataOne);
-    console.log("formDataTwo =", formDataTwo);
     if (!(formDataOne?.userPassword === formDataTwo?.userPassword)) {
       setErrorNum(1);
       return;

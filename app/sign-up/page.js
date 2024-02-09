@@ -38,7 +38,6 @@ function SignupPage() {
       setErrorNum(4);
       return;
     }
-    console.log(formData);
     formData.userPhoneNumber = Number(formData.userPhoneNumber);
 
     await fetch("/api/email", {

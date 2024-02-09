@@ -6,6 +6,5 @@ export async function getAccount() {
     console.error(error);
     return;
   }
-  console.log(data);
   return data;
 }

@@ -30,7 +30,6 @@ const DragAndDrop = ({ setDataUri, handleChange }) => {
     e.preventDefault();
     setDragging(false);
     const file = e.dataTransfer.files[0];
-    console.log("File dropped:", file);
     fileToDataUri(file).then((dataUri) => {
       setDataUri(dataUri);
     });

@@ -17,10 +17,8 @@ export default function ForgetPassword() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log(formData);
     const { data } = await getAccountId(formData.userName);
     const { userEmail } = data?.[0];
-    console.log("userEmail", userEmail);
     localStorage.setItem("userId", formData.userName);
     await fetch("/api/email", {
       method: "POST",
