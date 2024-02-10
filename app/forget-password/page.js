@@ -32,6 +32,11 @@ export default function ForgetPassword() {
 
   return (
     <>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
       <div className="login-container">
         <div className="login-content">
           <Image src={Logo} alt="Logo" />
@@ -57,6 +62,7 @@ export default function ForgetPassword() {
               Reset now
             </button>
           </form>
+          <br />
           <p>
             Won't to back login?{" "}
             <Link className="sign-up" href={"/log-in"}>
@@ -64,8 +70,17 @@ export default function ForgetPassword() {
             </Link>
           </p>
         </div>
+        <p
+          style={{
+            color: "#728FAA",
+            textAlign: "center",
+            marginTop: "15rem",
+            marginBottom: "0px",
+          }}
+        >
+          © All Rights Reserved taprime.com
+        </p>
       </div>
-      <p className="arrt">© All Rights Reserved taprime.com</p>
     </>
   );
 }

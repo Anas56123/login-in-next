@@ -67,6 +67,17 @@ label {
   margin-bottom: 10px;
 }
 
+.form-control-PH {
+  width: 70%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 7rem;
+}
+
 .btn {
   width: 100%;
   padding: 10px;
@@ -328,4 +339,17 @@ input[type="checkbox"] {
   left: 10rem;
   top: 2rem;
   z-index: 5;
+}
+
+.hhyhy {
+  position: relative;
+  right: 6.8rem;
+  top: 3.28rem;
+}
+
+.ggg{
+  color: #000000;
+  position: relative;
+  right: 6.8rem;
+  top: 2.45rem;
 }

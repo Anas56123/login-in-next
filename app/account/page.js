@@ -23,6 +23,9 @@ export default function Account() {
   });
   const [dataUri, setDataUri] = useState("");
   const [editMode, setEditMode] = useState(false);
+  const [searchT, setSearchT] = useState("");
+  const [searchTags, setSearchTags] = useState("");
+  const [submited, setSubmited] = useState(true);
   const router = useRouter();
   const postPerPage = 5;
   const indexOfLastPost = currentPage * postPerPage;
@@ -52,7 +55,10 @@ export default function Account() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (editMode) setEditMode(false);
+    if (editMode) {
+      setEditMode(false);
+      setSubmited(!submited);
+    }
     addMemories(formData);
     setFormData({
       title: "",
@@ -60,6 +66,7 @@ export default function Account() {
       description: "",
       tags: "",
     });
+    setSubmited(!submited);
   }
 
   useEffect(() => {
@@ -82,14 +89,14 @@ export default function Account() {
     getM();
 
     return () => {};
-  }, [formData]);
+  }, [submited]);
 
   return (
     <>
       <header>
         <Image src={Logo} alt="Logo" width={300} />
         <div>
-          <p>{data?.userName}</p>
+          <p style={{ color: "#fff" }}>{data?.userName}</p>
           <button
             onClick={() => resetYourPassword()}
             style={{ width: "10rem" }}
@@ -113,24 +120,35 @@ export default function Account() {
           <nav>
             <div className="memory-container">
               <ul className="memory-list">
-                {currentPost?.map((memory, index) => {
-                  if (index == 10) return;
-                  return (
-                    <li key={index}>
-                      <Memory
-                        title={memory.title}
-                        imgSrc={memory.url}
-                        id={memory.id}
-                        setFormData={setFormData}
-                        setEditMode={setEditMode}
-                      />
-                    </li>
-                  );
-                })}
+                {currentPost
+                  ?.filter((memory) => {
+                    return searchT == ""
+                      ? memory
+                      : memory?.title.includes(searchT);
+                  })
+                  .filter((memory) => {
+                    return searchTags == ""
+                      ? memory
+                      : memory?.tags.includes(searchTags);
+                  })
+                  .map((memory, index) => {
+                    if (index == 10) return;
+                    return (
+                      <li key={index}>
+                        <Memory
+                          title={memory.title}
+                          imgSrc={memory.url}
+                          id={memory.id}
+                          setFormData={setFormData}
+                          setEditMode={setEditMode}
+                        />
+                      </li>
+                    );
+                  })}
               </ul>
               <Pagination
                 postPerPage={postPerPage}
-                totalPosts={memories.length}
+                totalPosts={memories?.length}
                 paginate={paginate}
                 nextPage={nextPage}
                 prevPage={prevPage}
@@ -138,6 +156,28 @@ export default function Account() {
             </div>
           </nav>
           <form onSubmit={handleSubmit}>
+            <input
+              id="ST"
+              name="ST"
+              type="text"
+              className="form-control"
+              placeholder="Your memory title"
+              onChange={(e) => {
+                setSearchT(e.target.value);
+              }}
+            />
+            <input
+              id="STa"
+              name="STa"
+              type="text"
+              className="form-control"
+              placeholder="Your memory tag"
+              onChange={(e) => {
+                setSearchTags(e.target.value);
+              }}
+            />
+            <span>.................................................</span>
+            <br />
             {editMode ? <span>Edit: {formData.title}</span> : <span></span>}
             <input
               id="title"

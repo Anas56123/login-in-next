@@ -42,7 +42,7 @@ export default function ResetYourPassword() {
 
   return (
     <>
-      <div className="login-container">
+      <div className="login-container" style={{ padding: "0px" }}>
         <div className="login-content">
           <Image src={Logo} alt="Logo" />
           <br />
@@ -61,6 +61,7 @@ export default function ResetYourPassword() {
                 placeholder="Enter your new password"
                 value={formDataOne.userPassword}
                 onChange={handleChangeOne}
+                style={{ marginBottom: "0px" }}
               />
             </div>
             <div className="form-group">
@@ -75,12 +76,20 @@ export default function ResetYourPassword() {
                 placeholder="Confirm your new password"
                 value={formDataTwo.userPassword}
                 onChange={handleChangeTwo}
+                style={{ marginBottom: "0px" }}
               />
             </div>
             <button type="submit" className="btn btn-primary">
               Restore
             </button>
-            <p style={errorNum === 3 ? { color: "#0f0" } : { color: "#f00" }}>
+            <br />
+            <p
+              style={
+                errorNum === 3
+                  ? { color: "#0f0", textAlign: "center" }
+                  : { color: "#f00", textAlign: "center" }
+              }
+            >
               {errorNum === 0
                 ? ""
                 : errorNum === 1
@@ -91,10 +100,20 @@ export default function ResetYourPassword() {
                 ? "The account done sucsussfuly"
                 : "Some thing went wrong please reload the page"}
             </p>
+            <br />
+            <p
+              style={{
+                color: "#728FAA",
+                textAlign: "center",
+                marginTop: "24rem",
+                marginBottom: "0px",
+              }}
+            >
+              © All Rights Reserved taprime.com
+            </p>
           </form>
         </div>
       </div>
-      <p className="arrt">© All Rights Reserved taprime.com</p>
     </>
   );
 }

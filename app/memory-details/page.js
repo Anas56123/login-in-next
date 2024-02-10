@@ -41,6 +41,9 @@ export default function Home() {
       <h2>Description : </h2>
       <span>{data?.description}</span>
       <br />
+      <h3>Tags : </h3>
+      <span>{data?.tags}</span>
+      <br />
       <div>
         <button
           className="delete-btn"
